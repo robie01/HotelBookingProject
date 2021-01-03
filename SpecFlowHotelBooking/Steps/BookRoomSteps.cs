@@ -1,40 +1,78 @@
-﻿using System;
+﻿using HotelBookingStartupProject.Interfaces;
+using HotelBookingStartupProject.Models;
+using Moq;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowHotelBooking.Steps
 {
     [Binding]
-    public sealed class BookRoomSteps   
+    public class BookRoomSteps
     {
-
         private readonly ScenarioContext _scenarioContext;
+
+        public readonly Booking _booking = new Booking();
+
+        DateTime startOccupiedRange = DateTime.Today.AddDays(10);
+        DateTime endOccupiedRange = DateTime.Today.AddDays(20);
+
 
         public BookRoomSteps(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }
-        [Given(@"the start date which is tomorrow plus (.*)")]
-        public void GivenTheStartDateWhichIsTomorrowPlus(int p0)
+
+       
+        [Given(@"the start date which is tomorrow plus'(.*)'")]
+        public void GivenTheStartDateWhichIsTomorrowPlus(string startDate)
         {
-            _scenarioContext.Pending();
+            DateTime parsedDate = DateTime.ParseExact(startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            _booking.StartDate = parsedDate;
+           
         }
         
-        [Given(@"the end date which is tomorrow plus (.*)")]
-        public void GivenTheEndDateWhichIsTomorrowPlus(int p0)
+        [Given(@"the end date which is tomorrow plus'(.*)'")]
+        public void GivenTheEndDateWhichIsTomorrowPlus(string endDate)
         {
-            _scenarioContext.Pending();
+            DateTime parsedDate = DateTime.ParseExact(endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            _booking.EndDate = parsedDate;
         }
-        
+
         [When(@"the dates are check with the occupied range")]
         public void WhenTheDatesAreCheckWithTheOccupiedRange()
         {
-            _scenarioContext.Pending();
+
+            if ((_booking.StartDate <= startOccupiedRange && _booking.EndDate <= startOccupiedRange || _booking.StartDate > endOccupiedRange && _booking.EndDate > endOccupiedRange))
+            {
+                 _booking.IsActive = true;
+            }
+           
+            
+
+
         }
-        
-        [Then(@"the True should be returned")]
-        public void ThenTheTrueShouldBeReturned()
+
+         [Then(@"the '(.*)' should be returned")]
+        public void ThenTheShouldBeReturned(string p0)
         {
-            _scenarioContext.Pending();
+           
+            if(_booking.IsActive == false)
+            {
+                Console.WriteLine(p0, "Cant book at this period");
+            }
+            else
+            {
+                Console.WriteLine(p0, "Its available");
+              
+            }
+
+            //true = true
+                //true = false
+                //false = false
         }
     }
 }
