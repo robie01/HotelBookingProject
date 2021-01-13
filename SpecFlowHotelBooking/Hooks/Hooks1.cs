@@ -11,8 +11,8 @@ namespace SpecFlowHotelBooking
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
-        [BeforeScenario]
-        public static void BeforeScenario()
+        [BeforeScenario(Order = 0)]
+        public void BeforeScenario()
         {
             //TODO: implement logic that has to run before executing each scenario
             
@@ -21,7 +21,7 @@ namespace SpecFlowHotelBooking
         }
 
         [BeforeTestRun]
-        public void BeforeStart()
+        public static void BeforeStart()
         {
             //Offer a higher quality room
 

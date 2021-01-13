@@ -1,23 +1,16 @@
-﻿Feature: BookRoom
+﻿Feature: BookARoomBefore
 	As a potential customer
-	I want to see desired booked dates are free or not
-	So I can decide what days are free to book.
+	I want to book a room soon
 
+Scenario Outline: Book a room
+	Given the start date which is tomorrow plus <startDate>
+	And the end date which is tomorrow plus <endDate>
+	When the dates are checked to be correct
+	Then the <Availability> should be returned
 
-	Scenario Outline: Book room
-	Given the start date which is tomorrow plus'<startDate>'
-	And the end date which is tomorrow plus'<endDate>'
-	When the dates are check with the occupied range 
-	Then the '<Availability>' should be returned
-
-	Examples: 
+	Examples:
 		| startDate | endDate | Availability |
-		|     02/01/2021    |      10/01/2021  |  True   |
-		|     14/01/2021    |      20/01/2021  |  False |
-
-
-
-
-
-
-
+		| 2         | 4       | True         |
+		| 2         | 6       | False        |
+		| -1        | 2       | Exception    |
+		| 4         | 2       | Exception    |

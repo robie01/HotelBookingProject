@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBookingStartupProject", "HotelBookingStartupProject\HotelBookingStartupProject.csproj", "{5FD052DB-DA15-49A9-96E6-07E1846EA6C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowHotelBooking", "SpecFlowHotelBooking\SpecFlowHotelBooking.csproj", "{6C63C90F-F7B7-441F-961D-B8531BC3D534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowHotelBooking", "SpecFlowHotelBooking\SpecFlowHotelBooking.csproj", "{6C63C90F-F7B7-441F-961D-B8531BC3D534}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
