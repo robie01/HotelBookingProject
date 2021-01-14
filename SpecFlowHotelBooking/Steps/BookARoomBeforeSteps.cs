@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowHotelBooking.Steps
@@ -10,6 +11,10 @@ namespace SpecFlowHotelBooking.Steps
         static DateTime occupiedEndDate = DateTime.Today.AddDays(12);
         DateTime customerStartDate = DateTime.Today;
         DateTime customerEndDate = DateTime.Today;
+
+        static int luxuryRoom = 500;
+        static int standardRoom = 100;
+        List<int> Prices = new List<int> { luxuryRoom, standardRoom};
 
         [Given(@"the start date which is tomorrow plus(.*)")]
         public void GivenTheStartDateWhichIsTomorrowPlus(int startDate)
@@ -30,8 +35,16 @@ namespace SpecFlowHotelBooking.Steps
                 customerStartDate <= DateTime.Today ||
                 customerEndDate <= DateTime.Today)
             {
-                Console.WriteLine("Exception");
+                Console.WriteLine("Exception, make sure about the dates");
                 throw new Exception("Make sure the dates are correct and related to today.");
+            }
+             
+            ScenarioContext.Current.Add("PricesDetails", Prices);
+
+            var pricesList = ScenarioContext.Current.Get<IEnumerable<int>>("PricesDetails");
+            foreach(int price in pricesList)
+            {
+                Console.WriteLine("Available prices" + price);
             }
         }
 

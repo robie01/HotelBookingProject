@@ -14,16 +14,13 @@ namespace SpecFlowHotelBooking
         [BeforeScenario(Order = 0)]
         public void BeforeScenario()
         {
-            //TODO: implement logic that has to run before executing each scenario
-            
-            //Get all rooms from based on customer's wish
-            //Room 1 and 2 are occupied but 3 and 4 free
+            //Based on Hotel's availability, offers more or less room.
         }
 
         [BeforeTestRun]
         public static void BeforeStart()
         {
-            //Offer a higher quality room
+            //Order rooms by quality
 
         }
     }
