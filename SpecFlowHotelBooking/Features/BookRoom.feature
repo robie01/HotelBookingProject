@@ -16,19 +16,3 @@ Scenario Outline: Book a room
 		| 2         | 6       | False        |
 		| -1        | 2       | Exception    |
 		| 4         | 2       | Exception    |
-
-
-Feature: OrderFood
-
-Background:
-	Given the following food
-		| Food     | Price |
-		| Burger   | 75    |
-		| Pasta    | 50    |
-		| Sandwich | 35    |
-	And I am a current customer able to order food
-
-@OrderFood
-Scenario: Order food
-	When food is available to being delivered
-	Then send confirmation and food
