@@ -12,16 +12,20 @@ namespace SpecFlowHotelBooking
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
         [BeforeScenario(Order = 0)]
-        public void BeforeScenario()
+        public void CheckHolidaySeason()
         {
-            //Based on Hotel's availability, offers more or less room.
+            //Check holiday season
         }
 
-        [BeforeTestRun]
-        public static void BeforeStart()
+        [BeforeScenario(Order = 1)]
+        public void CheckHotelFreeRoom()
         {
-            //Order rooms by quality
-
         }
+
+        [BeforeScenario(Order = 2)]
+        public void ModifyPrice()
+        {
+        }
+
     }
 }

@@ -17,10 +17,18 @@ Scenario Outline: Book a room
 		| -1        | 2       | Exception    |
 		| 4         | 2       | Exception    |
 
-@bookRoom
+
+Feature: OrderFood
+
+Background:
+	Given the following food
+		| Food     | Price |
+		| Burger   | 75    |
+		| Pasta    | 50    |
+		| Sandwich | 35    |
+	And I am a current customer able to order food
+
+@OrderFood
 Scenario: Order food
-	Given a customer
-	And the food wish
 	When food is available to being delivered
-	And  customer is able to order food
 	Then send confirmation and food
